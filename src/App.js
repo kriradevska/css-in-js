@@ -3,6 +3,14 @@ import logo from "./logo.png";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 // import styled components, theming and animation from "./styles.js" file
+import { CardWrapper,
+        ImageWrapper,
+        TextWrapper,
+        TitleWrapper,
+        DescriptionWrapper,
+        ActionsWrapper,
+        Button, 
+} from "./styles";
 
 const hotels = [
   {
@@ -63,17 +71,17 @@ function App() {
        `}>
         {hotels.map((hotel) => {
           return (
-            <div key={hotel.id}>
-              <img src={hotel.src} alt={hotel.alt} />
-              <div>
-                <h2>{hotel.title}</h2>
-                <h3>{hotel.description}</h3>
-              </div>
-              <div>
-                <button>Details</button>
-                <button>Book</button>
-              </div>
-            </div>
+            <CardWrapper key={hotel.id}>
+              <ImageWrapper src={hotel.src} alt={hotel.alt} />
+              <TextWrapper>
+                <TitleWrapper>{hotel.title}</TitleWrapper>
+                <DescriptionWrapper>{hotel.description}</DescriptionWrapper>
+              </TextWrapper>
+              <ActionsWrapper>
+                <Button>Details</Button>
+                <Button>Book</Button>
+              </ActionsWrapper>
+            </CardWrapper>
           );
         })}
       </div>
