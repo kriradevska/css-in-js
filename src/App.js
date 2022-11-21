@@ -1,7 +1,7 @@
 import logo from "./logo.png";
 // import `css`and `ThemeProvider` from "@emotion/react" package
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { css, ThemeProvider } from "@emotion/react";
 // import styled components, theming and animation from "./styles.js" file
 import { CardWrapper,
         ImageWrapper,
@@ -10,7 +10,8 @@ import { CardWrapper,
         DescriptionWrapper,
         ActionsWrapper,
         PrimaryButton,
-        SecondaryButton 
+        SecondaryButton,
+        theme 
 } from "./styles";
 
 const hotels = [
@@ -40,13 +41,15 @@ const hotels = [
 // Apply styling to code within the `App` component's `return` statement using styled components, theming, animation and the `css` prop
 function App() {
   return (
+    <ThemeProvider theme={theme}>
     <main
-      css={{
-        color: "#03045e",
-        background: "#caf0f8",
+       css={(theme) => ({
+        color: theme.colors.primary,
+        background: theme.colors.secondary,
         height: "1200px",
-        fontFamily: "helvetica",
-      }}>
+        fontFamily: theme.fonts.primary,
+      })} 
+    >
         
       <img 
         src={logo}
@@ -87,6 +90,7 @@ function App() {
         })}
       </div>
     </main>
+    </ThemeProvider>
   );
 }
 
